@@ -1,10 +1,15 @@
-module "vpc" {
-  source                      = "./vendor/modules/vpc"
-  VPC_CIDR                    = var.VPC_CIDR  
+module "alb-public" {
+  source                      = "./vendor/modules/alb"
   ENV                         = var.ENV
-
-
+  INTERNAL                    = false 
+  ALB_NAME                    = "robot-public-alb"
+  # LB_TYPE                     = "external"
 }
 
-
-# You cannot variablize this piece of code in the source parameter
+module "alb-private" {
+  source                      = "./vendor/modules/alb"
+  ENV                         = var.ENV
+  INTERNAL                    = true 
+  ALB_NAME                    = "robot-private-alb"
+  # LB_TYPE                     = "internal"
+}
