@@ -1,3 +1,4 @@
+env.REPONAME="terraform-loadbalancers"
 pipeline {
     agent any
     options {
